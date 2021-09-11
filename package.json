@@ -1,0 +1,24 @@
+{
+  "name": "bookstore_pp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Runn1ng/BookStore_PP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Runn1ng/BookStore_PP/issues"
+  },
+  "homepage": "https://github.com/Runn1ng/BookStore_PP#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.5",
+    "vue": "^2.6.14"
+  }
+}
