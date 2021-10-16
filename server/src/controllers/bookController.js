@@ -1,4 +1,4 @@
-const {BookModel} = require('../models/book.js'); 
+const {Book} = require('../models/book.js'); 
 
 exports.index = function (req, res){
     res.send("Список книг");
@@ -9,7 +9,7 @@ exports.getBook = async function(req, res){
 };
 
 exports.createBook = async function(req, res){
-    const book = new BookModel(req.body);
+    const book = new Book(req.body);
     await book.save();
     res.json({state: 'success', bookId: book.id});
 };

@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const { Publisher, PublisherSchema } = require('./publisher');
 
-const Book = new Schema({
-    name: String,
-    email: String,
-    address: String,
-    gender: String,
+const BookSchema = new Schema({
+    name: {
+        type: String,
+        required: true,
+    }, 
+    publisher: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'PublisherSchema'
+    }
 });
  
-exports.BookModel = mongoose.model('Book', Book);
+exports.Book = mongoose.model('Book', BookSchema);

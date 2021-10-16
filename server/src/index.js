@@ -2,16 +2,20 @@ const config = require('../config/config')
 
 const bookController = require('./controllers/bookController.js')
 const userController = require('./controllers/userController.js')
+const authorController = require('./controllers/authorController.js')
 
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const mongoose = require('mongoose')
 
 const app = express()
 const userRouter = express.Router()
 const bookRouter = express.Router()
+const authorRouter = express.Router()
 
-app.use(bodyParser.json())
+mongoose.connect('mongodb://localhost:27017/bookstore')
+
 app.use(cors())
 
 
@@ -32,4 +36,14 @@ bookRouter.post('/', bookController.createBook);
 bookRouter.put('/:id', bookController.updateBook);
 bookRouter.delete('/:id', bookController.deleteBook);
 
+authorRouter.get("/", authorController.index);
+authorRouter.get("/:id", authorController.getAuthor);
+authorRouter.post("/", authorController.createAuthor);
+authorRouter.put("/:id", authorController.updateAuthor);
+authorRouter.delete("/:id", authorController.deleteAuthor);
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/books', bookRouter);
+app.use("/authors", authorRouter);
