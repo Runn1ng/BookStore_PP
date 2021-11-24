@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Catalog</router-link> |
       <router-link to="/profile">Profile</router-link> |
       <router-link to="/registration">Registration</router-link> |
       <router-link to="/auth">Authorization</router-link>
-    </div>
+    </div> -->
     <!-- Попробую замутить шапку -->
     <router-view/>
   </div>

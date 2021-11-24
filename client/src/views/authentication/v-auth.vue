@@ -1,10 +1,6 @@
 <template>
-	<div class="registration">
+	<div class="v-auth">
 		<form @submit.prevent="sendData">
-			<div class="form-control">
-				<label for="name">Name</label>
-				<input v-model="name" id="name" type="text">
-			</div>
 			<div class="form-control">
 				<label for="login">Login</label>
 				<input v-model="login" id="login" type="text">
@@ -23,18 +19,16 @@
 import axios from 'axios';
 
 export default {
-	name: 'registration',
+	name: 'v-auth',
 	data: function () {
 		return {
-			name: '',
 			login: '',
-			password: '',
-			admin: false
+			password: ''
 		}
 	},
 	methods: {
 		sendData() {
-			console.log(this.name, this.login, this.password, this.admin);
+			console.log(this.login, this.password);
 			this.$router.push('detail');
 		}
 	},

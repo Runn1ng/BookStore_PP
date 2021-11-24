@@ -1,10 +1,10 @@
 <template>
 	<div class="v-catalog-item">
-		<img :src="require('../assets/images/' + product_data.image)" alt="img">
+		<img :src="require('../../assets/images/' + product_data.image)" alt="img">
 		<p>{{product_data.name}}</p>
 		<span>{{product_data.author}}</span>
 		<span>Price: {{product_data.price}}</span>
-		<button @click="sendToCart">Add to cart</button>
+		<button class="add_btn" @click="addToCart">Add to cart</button>
 	</div>
 </template>
 
@@ -25,9 +25,12 @@
 		},
 		computed: {},
 		methods: {
-			sendToCart() {
-				this.$emit('sendArticle', this.product_data.article)
+			addToCart() {
+				this.$emit('addToCart', this.product_data);
 			}
+		},
+		mounted() {
+			this.$set(this.product_data, 'quantity', 1);
 		}
 	}
 </script>
@@ -58,5 +61,10 @@
 
 	.v-catalog-item button {
 		margin: 0 auto;
+		padding: 8px 16px;
+		border: 0;
+		border-radius: 5px;
+		background: #26ae70;
+		color: #ffffff;
 	}
 </style>

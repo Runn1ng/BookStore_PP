@@ -1,12 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import vCatalog from '../views/v-catalog.vue'
-import vCart from '../views/v-cart.vue'
-
-import Registration from '../views/Registration.vue'
-import Authorization from '../views/Authorization.vue'
-import Profile from '../views/Profile.vue'
+import vCatalog from '../views/catalog/v-catalog.vue'
+import vDetail from '../views/catalog/v-catalog-detail.vue'
+import vCart from '../views/cart/v-cart.vue'
+import vProfile from '../views/v-profile.vue'
 
 Vue.use(VueRouter);
 
@@ -23,19 +21,15 @@ const routes = [
       props: true
   },
   {
-    path: '/registration',
-    name: 'registration',
-    component: Registration
-  },
-  {
-    path: '/auth',
-    name: 'auth',
-    component: Authorization
+      path: '/detail',
+      name: 'detail',
+      component: vDetail,
+      props: true
   },
   {
       path: '/profile',
       name: 'profile',
-      component: Profile
+      component: vProfile
   }
 ]
 

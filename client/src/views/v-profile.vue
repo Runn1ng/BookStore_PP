@@ -1,5 +1,5 @@
 <template>
-	<div class="profile">
+	<div class="v-profile">
 		<h1>Это твой профиль чорт</h1>
 		<router-link to="/">Home</router-link>
 	</div>
@@ -7,6 +7,6 @@
 
 <script>
 	export default {
-		name: 'profile',
+		name: 'v-profile',
 	}
 </script>
