@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
 import store from './vuex/store'
+import 'material-design-icons-iconfont'
 
 Vue.config.productionTip = false
 

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import vCatalog from '../views/catalog/v-catalog.vue'
-import vDetail from '../views/catalog/v-catalog-detail.vue'
 import vCart from '../views/cart/v-cart.vue'
 import vProfile from '../views/v-profile.vue'
 
@@ -18,12 +17,6 @@ const routes = [
       path: '/cart',
       name: 'cart',
       component: vCart,
-      props: true
-  },
-  {
-      path: '/detail',
-      name: 'detail',
-      component: vDetail,
       props: true
   },
   {
