@@ -21,12 +21,15 @@ exports.createAuthor = async function(req, res){
     res.json({state: 'success', authorId: author.id});
 };
 
-exports.updateAuthor = function(req, response){
-    const {id} = req;
+exports.updateAuthor = async function(req, response){
+    await Author.findOneAndUpdate({_id : parseInt(req.params.id)}, req.body, {
+        returnOriginal: false
+      });
     res.send("Изменения автора");
 };
 
-exports.deleteAuthor = function(req, response){
-    const {id} = req;
+exports.deleteAuthor = async function(req, response){
+    const author = await Author.findOne({_id : parseInt(req.params.id)})
+    author.remove();
     res.send("Удаление автора");
 };
