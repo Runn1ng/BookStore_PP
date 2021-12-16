@@ -1,5 +1,6 @@
 const {Author} = require('../models/author.js');
 const { ObjectId } = require('mongoose').Types;
+const {Book} = require('../models/book.js'); 
 
 exports.index = async function (req, res){
     let authors = await Author.find()
@@ -30,6 +31,10 @@ exports.updateAuthor = async function(req, response){
 
 exports.deleteAuthor = async function(req, response){
     const author = await Author.findOne({_id : parseInt(req.params.id)})
+    const books = Book.find({author: author});
+    (await books).forEach(book => {
+        book.remove();
+    })
     author.remove();
     res.send("Удаление автора");
 };
