@@ -1,5 +1,6 @@
 const {Author} = require('../models/author.js');
 const { ObjectId } = require('mongoose').Types;
+const {Book} = require('../models/book.js'); 
 
 exports.index = async function (req, res){
     let authors = await Author.find()
@@ -21,12 +22,19 @@ exports.createAuthor = async function(req, res){
     res.json({state: 'success', authorId: author.id});
 };
 
-exports.updateAuthor = function(req, response){
-    const {id} = req;
+exports.updateAuthor = async function(req, response){
+    await Author.findOneAndUpdate({_id : parseInt(req.params.id)}, req.body, {
+        returnOriginal: false
+      });
     res.send("Изменения автора");
 };
 
-exports.deleteAuthor = function(req, response){
-    const {id} = req;
+exports.deleteAuthor = async function(req, response){
+    const author = await Author.findOne({_id : parseInt(req.params.id)})
+    const books = Book.find({author: author});
+    (await books).forEach(book => {
+        book.remove();
+    })
+    author.remove();
     res.send("Удаление автора");
 };

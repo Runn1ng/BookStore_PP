@@ -15,8 +15,16 @@ exports.createBook = async function(req, res){
 };
 
 exports.updateBook = function(req, response){
-    const {id} = req;
-    res.send("Изменение в книге");
+    if (user.is_admin && user.auth) {
+        const {id} = req;
+        await Book.findOneAndUpdate({_id : id}, req.body, {
+            returnOriginal: false
+        });
+        res.send("Изменение в книге");
+    } else {
+        res.status(403)
+        res.send("Нет доступа");
+    }
 };
 
 exports.deleteBook = function(req, response){
