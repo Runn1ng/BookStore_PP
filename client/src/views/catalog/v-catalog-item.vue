@@ -63,6 +63,7 @@
 				this.isInfoPopupVisible = false;
 			},
 			addToCart() {
+				console.log(this.product_data);
 				this.$emit('addToCart', this.product_data);
 			}
 		},

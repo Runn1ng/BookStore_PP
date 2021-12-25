@@ -1,0 +1,64 @@
+{
+	"products": [
+		{
+			"image": "default_book.png",
+			"name": "Book 1",
+			"author": "Author 1",
+			"pubHouse": "Pub 1",
+			"price": 300,
+			"article": "B1",
+			"cover": true,
+			"available": true
+		},
+		{
+			"image": "default_book.png",
+			"name": "Book 2",
+			"author": "Author 2",
+			"pubHouse": "Pub 2",
+			"price": 300,
+			"article": "B2",
+			"cover": true,
+			"available": true
+		},
+		{
+			"image": "default_book.png",
+			"name": "Book 3",
+			"author": "Author 3",
+			"pubHouse": "Pub 3",
+			"price": 300,
+			"article": "B3",
+			"cover": false,
+			"available": true
+		},
+		{
+			"image": "default_book.png",
+			"name": "Book 4",
+			"author": "Author 4",
+			"pubHouse": "Pub 3",
+			"price": 300,
+			"article": "B4",
+			"cover": false,
+			"available": true
+		},
+		{
+			"image": "default_book.png",
+			"name": "Book 5",
+			"author": "Author 5",
+			"pubHouse": "Pub 2",
+			"price": 300,
+			"article": "B5",
+			"cover": true,
+			"available": true
+		},
+		{
+			"image": "default_book.png",
+			"name": "Book 6",
+			"author": "Author 6",
+			"pubHouse": "Pub 1",
+			"price": 300,
+			"article": "B6",
+			"cover": false,
+			"available": true
+		}
+	]
+}
