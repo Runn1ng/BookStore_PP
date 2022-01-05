@@ -9,6 +9,7 @@
 			v-if="areOptionsVisible"
 		>
 			<p
+				class="title_o"
 				v-for="option in options"
 				:key="option.value"
 				@click="selectOption(option)"
@@ -56,5 +57,10 @@
 </script>
 
 <style>
-	
+	.v-select .title,
+	.v-select .title_o:not(:last-child) {
+		height: 30px;
+		margin-bottom: 0px;
+		border-bottom: 1px solid rgba(174, 174, 174, 0.5);
+	}
 </style>

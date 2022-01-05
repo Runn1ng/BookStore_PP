@@ -89,9 +89,10 @@ export default {
 
 .v-cart .v-cart__link_to_catalog {
 	position: absolute;
-	top: 10px;
+	top: 110px;
 	left: 10px;
 	padding: 15px;
+    border: 1px solid #aeaeae;
 }
 
 .v-cart .v-cart-item {
