@@ -2,16 +2,16 @@
 	<div class="v-auth">
 		<form @submit.prevent="sendData">
 			<div class="form-control">
-				<label for="login">Login</label>
+				<label for="login">Логин</label>
 				<input v-model="login" id="login" type="text">
 			</div>
 			<div class="form-control">
-				<label for="password">Password</label>
-				<input v-model="password" id="password" type="text">
+				<label for="password">Пароль</label>
+				<input v-model="password" id="password" type="password">
 			</div>
-			<input type="submit" class="send" value="Send">
+			<input type="submit" class="send" value="Авторизоваться">
 	    </form>
-		<router-link to="/">Home</router-link>
+		<router-link to="/">На главную</router-link>
   	</div>
 </template>
 
@@ -28,8 +28,16 @@ export default {
 	},
 	methods: {
 		sendData() {
-			console.log(this.login, this.password);
-			this.$router.push('detail');
+			axios.post('http://localhost:8081/user/login', {
+				login: this.login,
+				password: this.password,
+			}, {withCredentials: "true"}).then(res => {
+				if (res.data.result == "success") {
+
+				} else {
+					console.log(res.data)
+				}
+			})
 		}
 	},
 }

@@ -1,7 +1,7 @@
 const {Book} = require('../models/book.js'); 
 
 exports.index = function (req, res){
-    res.send("Список книг");
+    res.send(Book.find());
 };
 
 exports.getBook = async function(req, res){

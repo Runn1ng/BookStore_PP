@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default {
     GET_PRODUCTS_FROM_API({commit}) {
-        return axios('http://localhost:3000/products', {
+        return axios('http://localhost:8081/books', {
             method: "GET"
         })
         .then((products) => {

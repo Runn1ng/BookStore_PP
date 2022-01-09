@@ -2,20 +2,28 @@
 	<div class="v-registration">
 		<form @submit.prevent="sendData">
 			<div class="form-control">
-				<label for="name">Name</label>
-				<input v-model="name" id="name" type="text">
+				<label for="firstname">Имя</label>
+				<input v-model="firstname" required id="firstname" type="text">
 			</div>
 			<div class="form-control">
-				<label for="login">Login</label>
-				<input v-model="login" id="login" type="text">
+				<label for="lastname">Фамилия</label>
+				<input v-model="lastname" required id="lastname" type="text">
 			</div>
 			<div class="form-control">
-				<label for="password">Password</label>
-				<input v-model="password" id="password" type="text">
+				<label for="patronymic">Отчество</label>
+				<input v-model="patronymic" id="patronymic" type="text">
 			</div>
-			<input type="submit" class="send" value="Send">
+			<div class="form-control">
+				<label for="login">Логин</label>
+				<input v-model="login" required id="login" type="text">
+			</div>
+			<div class="form-control">
+				<label for="password">Пароль</label>
+				<input v-model="password" required id="password" type="password">
+			</div>
+			<input type="submit" class="send" value="Зарегистрироваться">
 	    </form>
-		<router-link to="/">Home</router-link>
+		<router-link to="/">На главную</router-link>
   	</div>
 </template>
 
@@ -23,19 +31,33 @@
 import axios from 'axios';
 
 export default {
-	name: 'v-rregistration',
+	name: 'v-registration',
 	data: function () {
 		return {
-			name: '',
+			firstname: '',
+			lastname: '',
+			patronymic: '',
 			login: '',
 			password: '',
-			admin: false
+			is_admin: false
 		}
 	},
 	methods: {
 		sendData() {
-			console.log(this.name, this.login, this.password, this.admin);
-			this.$router.push('detail');
+
+			axios.post('http://localhost:8081/user/registration', {
+				firstname: this.firstname,
+				lastname: this.lastname,
+				patronymic: this.patronymic,
+				login: this.login,
+				password: this.password,
+				is_admin: false
+			}, {withCredentials: true}).then(res => {
+				if (res.data.result == "success") {
+					this.$router.push('login');
+				}
+			})
+				
 		}
 	},
 }

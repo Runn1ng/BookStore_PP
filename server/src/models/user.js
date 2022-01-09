@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     },
     patronymic: {
         type: String,
-        required: true,
+        required: false,
     },
     login: {
         type: String,
