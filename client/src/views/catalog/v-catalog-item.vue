@@ -1,6 +1,5 @@
 <template>
 	<div class="v-catalog-item">
-
 		<v-popup
 			v-if="isInfoPopupVisible"
 			:popupTitle = "product_data.name"
@@ -15,7 +14,6 @@
 				<p class="v-catalog-item__article">{{product_data.article}}</p>
 				<p class="v-catalog-item__price">Price: {{product_data.price}}</p>
 			</div>
-			
 		</v-popup>
 
 		<img class="v-catalog-item__img" :src="require('../../assets/images/' + product_data.image)" alt="img">
@@ -113,7 +111,20 @@
 		background: #fa8013;
 	}
 
-	.cont_wrap {
+	.v-popup__content .v-catalog-item__img {
 		width: 45%;
+	}
+
+	.v-popup__content .cont_wrap {
+		width: 50%;
+	}
+	
+	.v-popup__content .cont_wrap p {
+		width: 80%;
+		height: 25px;
+		border-bottom: 1px solid rgba(174,174,174,0.5);
+		margin-left: 10%;
+		margin-bottom: 0;
+		
 	}
 </style>
