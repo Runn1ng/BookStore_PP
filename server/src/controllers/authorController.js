@@ -23,15 +23,15 @@ exports.createAuthor = async function(req, res){
 };
 
 exports.updateAuthor = async function(req, response){
-    await Author.findOneAndUpdate({_id : parseInt(req.params.id)}, req.body, {
+    await Author.findOneAndUpdate(req.params.id, req.body, {
         returnOriginal: false
       });
     res.send("Изменения автора");
 };
 
 exports.deleteAuthor = async function(req, response){
-    const author = await Author.findOne({_id : parseInt(req.params.id)})
-    const books = Book.find({author: author});
+    const author = await Author.findById(req.params.id)
+    const books = Book.find({author: author._id});
     (await books).forEach(book => {
         book.remove();
     })

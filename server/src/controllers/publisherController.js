@@ -1,9 +1,12 @@
 const { Publisher } = require('../models/publisher.js');
 const { ObjectId } = require('mongoose').Types;
 
+exports.index = async function(req, res) {
+    res.send(await Publisher.find());
+}
 
 exports.getPublisher = async function(req, res){
-    const publisher = await Publisher.findOne({_id : parseInt(req.params.id)})
+    const publisher = await Publisher.findById(req.params.id);
     res.send({'result' : publisher});
 };
 
@@ -15,10 +18,12 @@ exports.createPublisher = async function(req, res){
 
 exports.updatePublisher = function(req, response){
     const {id} = req;
+    await Publisher.findByIdAndUpdate(id, req.body);
     res.send("Изменения издателя");
 };
 
 exports.deletePublisher = function(req, response){
     const {id} = req;
+    await Publisher.findByIdAndDelete(id);
     res.send("Удаление издателя");
 };

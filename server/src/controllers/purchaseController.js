@@ -1,6 +1,9 @@
 const { Purchase } = require('../models/purchase');
 const { ObjectId } = require('mongoose').Types;
 
+exports.index = async function(req, res) {
+    res.send(await Purchase.find());
+}
 
 exports.getPurchase = async function(req, res){
     const purchase = await Purchase.findOne({_id : parseInt(req.params.id)})
@@ -14,11 +17,13 @@ exports.createPurchase = async function(req, res){
 };
 
 exports.updatePurchase = function(req, response){
-    const {id} = req;
+    const {id} = req.params;
+    await Purchase.findByIdAndUpdate(id, req.body);
     res.send("Изменения закупки");
 };
 
 exports.deletePurchase = function(req, response){
     const {id} = req;
+    await Purchase.findByIdAndDelete(id);
     res.send("Удаление закупки");
 };

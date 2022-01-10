@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const { Publisher, PublisherSchema } = require('./publisher');
+const { Author, AuthorSchema } = require('./author');
 
 const BookSchema = new Schema({
     name: {
@@ -9,7 +10,32 @@ const BookSchema = new Schema({
     }, 
     publisher: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'PublisherSchema'
+        ref: 'Publisher'
+    }, 
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Author'
+    },
+    price: {
+        type: Number,
+        required: true,
+        min: 0
+    },
+    img: {
+        type: String,
+        default: 'default_book.png'
+    },
+    cover: {
+        type: Boolean,
+        default: false
+    },
+    count: {
+        type: Number,
+        default: 0
+    },
+    count: {
+        type: String,
+        default: "Прекрасная книга",
     }
 });
  

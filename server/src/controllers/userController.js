@@ -37,6 +37,7 @@ exports.login = async function(req, res){
 					res.send({'result': 'error', 'error': 'Вы уже авторизованы'})
 				} else {
 					req.session.isAuth = true
+					req.session.isAdmin = doc.is_admin
 					req.session.user_name = `${doc.firstname} ${doc.lastname}`;
 					req.session.user_id = doc.id
 					res.send({'result': 'success'});
