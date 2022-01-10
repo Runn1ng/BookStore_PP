@@ -1,10 +1,10 @@
 <template>
 	<div class="v-cart">
 		<router-link :to="{name: 'catalog'}">
-			<div class="v-cart__link_to_catalog">&lt;&lt;&lt; Back to catalog</div>
+			<div class="v-cart__link_to_catalog">&lt;&lt;&lt; Назад в каталог</div>
 		</router-link>
-		<h1>Cart</h1>
-		<p v-if="!cart_data.length">There are no products in cart :(</p>
+		<h1>Корзина</h1>
+		<p v-if="!cart_data.length">В корзине нет товаров :(</p>
 		<v-cart-item 
 			v-for="(item, index) in cart_data"
 			:key="item.article"
@@ -14,8 +14,8 @@
 			@decrement="decrement(index)"
 		/>
 		<div class="v-cart__total">
-			<p class="total_name">Total:</p>
-			<p>{{cartTotalCost}} р</p>
+			<p class="total_name">Итог:</p>
+			<p>{{cartTotalCost}} р.</p>
 		</div>
 	</div>
 </template>

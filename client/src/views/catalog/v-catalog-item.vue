@@ -3,7 +3,7 @@
 		<v-popup
 			v-if="isInfoPopupVisible"
 			:popupTitle = "product_data.name"
-			rightBtnTitle = "Add to cart"
+			rightBtnTitle = "Добавить в корзину"
 			@closePopup = "closeInfoPopup"
 			@rightBtnAction = "addToCart"
 		>
@@ -12,22 +12,22 @@
 				<p class="v-catalog-item__author">{{product_data.author}}</p>
 				<p class="v-catalog-item__pub-house">{{product_data.pubHouse}}</p>
 				<p class="v-catalog-item__article">{{product_data.article}}</p>
-				<p class="v-catalog-item__price">Price: {{product_data.price}}</p>
+				<p class="v-catalog-item__price">Цена: {{product_data.price}} р.</p>
 			</div>
 		</v-popup>
 
 		<img class="v-catalog-item__img" :src="require('../../assets/images/' + product_data.image)" alt="img">
 		<p class="v-catalog-item__name">{{product_data.name}}</p>
 		<span class="v-catalog-item__author">{{product_data.author}}</span>
-		<span class="v-catalog-item__price">Price: {{product_data.price}}</span>
+		<span class="v-catalog-item__price">Цена: {{product_data.price}} р.</span>
 		<button
 			class="v-catalog-item__show-info"
 			@click="showPopupInfo"
-		>Show info</button>
+		>Показать информацию</button>
 		<button 
 			class="v-catalog-item__add-to-cart" 
 			@click="addToCart"
-		>Add to cart</button>
+		>Добавить в корзину</button>
 	</div>
 </template>
 

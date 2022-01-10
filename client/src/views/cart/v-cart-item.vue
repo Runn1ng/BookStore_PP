@@ -7,14 +7,14 @@
             <p>{{cart_item_data.article}}</p>
         </div>
         <div class="v-cart-item__quantity">
-            <p>Quantity:</p>
+            <p>Количество:</p>
             <span>
                 <span @click="decrementItem" class="quantity_btn">-</span>
                 {{cart_item_data.quantity}}
                 <span @click="incrementItem" class="quantity_btn">+</span>
             </span>
         </div>
-        <button @click="deleteFromCart">Delete</button>
+        <button @click="deleteFromCart">Удалить</button>
     </div>
 </template>
 
