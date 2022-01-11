@@ -40,7 +40,12 @@ exports.login = async function(req, res){
 					req.session.isAdmin = doc.is_admin
 					req.session.user_name = `${doc.firstname} ${doc.lastname}`;
 					req.session.user_id = doc.id
-					res.send({'result': 'success'});
+
+					res.send({'result': 'success', sessionData: {
+						isAdmin: doc.is_admin,
+						user_name: `${doc.firstname} ${doc.lastname}`,
+						user_id: doc.id
+					}});
 				}	
 			} else {
                 res.send({'result': 'fail', 'error': 'Неправильный пароль'});

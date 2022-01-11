@@ -18,7 +18,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="v-profile__admin-panel">
+			<div class="v-profile__admin-panel" v-if="isAdmin()">
 				<h2>Админ панель</h2>
 				<!-- <router-link :to="{name: ''}">
 					<div class="v-profile__link-to-db">Изменить поставщиков</div>
@@ -42,8 +42,16 @@
 		data() {
 			return {}
 		},
-		computed: {},
-		methods: {},
+		computed: {
+			olegus(){
+				console.log('oleg');
+			}
+		},
+		methods: {
+			isAdmin(){
+				return this.$session.exists() && this.$session.get('isAdmin');
+			}
+		},
 	}
 </script>
 

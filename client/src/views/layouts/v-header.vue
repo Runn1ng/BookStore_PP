@@ -16,14 +16,14 @@
             </button>
         </div>
         <div class="auth-block">
-            <!-- <router-link :to="{name: 'login'}">
+            <router-link v-if="!isLogged()" :to="{name: 'login'}">
                 <div class="v-header__link-to-login">Войти</div>
             </router-link>
-            <router-link :to="{name: 'registration'}">
+            <router-link v-if="!isLogged()" :to="{name: 'registration'}">
                 <div class="v-header__link-to-reg">Регистрация</div>
-            </router-link> -->
+            </router-link>
 
-            <router-link :to="{name: 'profile'}">
+            <router-link v-if="isLogged()" :to="{name: 'profile'}">
                 <div class="v-header__link-to-profile">Профиль</div>
             </router-link>
         </div>
@@ -51,6 +51,9 @@ export default {
         ...mapActions([
             'GET_SEARCH_VALUE_TO_VUEX'
         ]),
+        isLogged() {
+            return this.$session.exists() && this.$session.has('isAdmin')
+        },
         search(value) {
             this.GET_SEARCH_VALUE_TO_VUEX(value);
             

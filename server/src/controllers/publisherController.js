@@ -16,13 +16,13 @@ exports.createPublisher = async function(req, res){
     res.json({state: 'success', publisherId: publisher.id});
 };
 
-exports.updatePublisher = function(req, response){
+exports.updatePublisher = async function(req, response){
     const {id} = req;
     await Publisher.findByIdAndUpdate(id, req.body);
     res.send("Изменения издателя");
 };
 
-exports.deletePublisher = function(req, response){
+exports.deletePublisher = async function(req, response){
     const {id} = req;
     await Publisher.findByIdAndDelete(id);
     res.send("Удаление издателя");

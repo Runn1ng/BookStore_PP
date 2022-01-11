@@ -33,7 +33,12 @@ export default {
 				password: this.password,
 			}, {withCredentials: "true"}).then(res => {
 				if (res.data.result == "success") {
-
+					this.$session.start();
+					const sessionData = res.data.sessionData;
+					this.$session.set('isAdmin', sessionData.isAdmin);
+					this.$session.set('userName', sessionData.user_name);
+					this.$session.set('userId', sessionData.user_id);
+					this.$router.push('profile');
 				} else {
 					console.log(res.data)
 				}

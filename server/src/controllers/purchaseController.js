@@ -16,13 +16,13 @@ exports.createPurchase = async function(req, res){
     res.json({state: 'success', purchaseId: purchase.id});
 };
 
-exports.updatePurchase = function(req, response){
+exports.updatePurchase = async function(req, response){
     const {id} = req.params;
     await Purchase.findByIdAndUpdate(id, req.body);
     res.send("Изменения закупки");
 };
 
-exports.deletePurchase = function(req, response){
+exports.deletePurchase = async function(req, response){
     const {id} = req;
     await Purchase.findByIdAndDelete(id);
     res.send("Удаление закупки");

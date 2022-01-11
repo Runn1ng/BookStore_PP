@@ -22,13 +22,13 @@ exports.createSale = async function(req, res){
     res.json({state: 'success', saleId: sale.id});
 };
 
-exports.updateSale = function(req, response){
+exports.updateSale = async function(req, response){
     const {id} = req.params;
     await Sale.findByIdAndUpdate(id, req.body);
     res.send("Изменения закупки");
 };
 
-exports.deleteSale = function(req, response){
+exports.deleteSale = async function(req, response){
     const {id} = req.params;
     await Sale.findByIdAndDelete(id);
     res.send("Удаление закупки");
