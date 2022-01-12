@@ -17,6 +17,9 @@
 			<p class="total_name">Итог:</p>
 			<p>{{cartTotalCost}} р.</p>
 		</div>
+		<div class="v-cart__buy">
+			<button class="buy_books">Покупаю</button>
+		</div>
 	</div>
 </template>
 
@@ -108,7 +111,8 @@ export default {
 	color: black;
 }
 
-.v-cart__total {
+.v-cart__total,
+.v-cart__buy {
 	display: flex;
 	justify-content: center;
 	position: fixed;
@@ -121,7 +125,26 @@ export default {
 	font-size: 20px;
 }
 
+.v-cart__total {
+	bottom: 51px;
+}
+
 .v-cart__total .total_name {
 	margin-right: 8px;
+}
+
+.v-cart__buy {
+	padding: 0;
+	background: #229963;
+}
+
+.v-cart__buy .buy_books {
+    width: 100%;
+	height: 51px;
+	border: 0;
+    background: #229963;
+    color: #ffffff;
+    font-size: 17px;
+	cursor: pointer;
 }
 </style>
