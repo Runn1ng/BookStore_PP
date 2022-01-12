@@ -14,9 +14,18 @@
 				<input v-model="autor" required id="autor" type="text">
 			</div>
 			<div class="form-control">
+				<label for="article">Описание</label>
+				<input v-model="article" required id="article" type="text">
+			</div>
+			<div class="form-control">
 				<label for="price">Цена</label>
 				<input v-model="price" id="price" type="text">
 			</div>
+			<div class="form-control">
+				<label for="count">Количество</label>
+				<input v-model="count" id="price" type="int">
+			</div>
+			  
 			<input type="submit" class="send" value="Добавить">
 	    </form>
 		<router-link to="/profile">Назад</router-link>
@@ -37,7 +46,10 @@ export default {
 			name: '',
             publisher: '',
 			autor: '',
-            price: ''
+            price: '',
+			article: '',
+			cover: false,
+			count: 0, 
 		}
 	},
 	methods: {

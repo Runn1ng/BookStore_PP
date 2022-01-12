@@ -23,7 +23,7 @@
 import axios from 'axios';
 
 export default {
-	name: 'v-autor',
+	name: 'v-author',
 	data: function () {
 		return {
 			firstname: '',
@@ -33,6 +33,13 @@ export default {
 	},
 	methods: {
 		sendData() {
+			axios.post('http://localhost:8081/authors/', {
+				firstname: this.firstname,
+				lastname: this.lastname,
+            	patronymic: this.patronymic
+			}, {withCredentials: "true"}).then(res => {
+				this.$router.push('profile');
+			})
 		}
 	},
 }

@@ -79,6 +79,7 @@ convertRouter.post('/', convertController.convertSum);
 // Авторизация
 userRouter.post('/registration', userController.register);
 userRouter.post('/login', userController.login);
+userRouter.get('/:id', userController.getUser);
 
 // Работа с каталогом
 bookRouter.get('/', bookController.index);

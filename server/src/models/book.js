@@ -25,6 +25,10 @@ const BookSchema = new Schema({
         type: String,
         default: 'default_book.png'
     },
+    article: {
+        type: String,
+        default: 'Хорошая книга'
+    },
     cover: {
         type: Boolean,
         default: false

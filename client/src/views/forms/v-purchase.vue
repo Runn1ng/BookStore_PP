@@ -31,7 +31,7 @@
 import axios from 'axios';
 
 export default {
-	name: 'v-supplier',
+	name: 'v-purchase',
 	data: function () {
 		return {
 			book: '',

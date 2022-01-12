@@ -12,7 +12,8 @@
 				<p class="v-catalog-item__author">{{product_data.author}}</p>
 				<p class="v-catalog-item__pub-house">{{product_data.pubHouse}}</p>
 				<p class="v-catalog-item__article">{{product_data.article}}</p>
-				<p class="v-catalog-item__price">Цена: {{product_data.price}} р.</p>
+				<p class="v-catalog-item__price" >Цена: {{product_data.price}} р.</p>
+				<p v-show="usdPrice" class="v-catalog-item__price">{{usdPrice}} $ / {{eurPrice}} €</p>
 			</div>
 		</v-popup>
 
@@ -33,6 +34,7 @@
 
 <script>
 	import vPopup from '../popup/v-popup.vue'
+	import axios from 'axios';
 
 	export default {
 		name: 'v-catalog-item',
@@ -45,12 +47,21 @@
 				default() {
 					return {}
 				}
-			}
+			},
 		},
 		data() {
 			return {
-				isInfoPopupVisible: false
+				isInfoPopupVisible: false,
+				usdPrice: 0,
+				eurPrice: 0,
 			}
+		},
+		created: function() {
+			const self = this
+			axios.get('http://localhost:8081/convert?sum='+this.product_data.price, {withCredentials: true}).then(res => {
+				self.$set(self, 'usdPrice', res.data.usd);
+				self.$set(self, 'eurPrice', res.data.eur);
+			})
 		},
 		computed: {},
 		methods: {
@@ -60,8 +71,10 @@
 			closeInfoPopup() {
 				this.isInfoPopupVisible = false;
 			},
+			hasCurrency() {
+				return product_data.eurPrice && product_data.usdPrice;
+			},
 			addToCart() {
-				console.log(this.product_data);
 				this.$emit('addToCart', this.product_data);
 			}
 		},

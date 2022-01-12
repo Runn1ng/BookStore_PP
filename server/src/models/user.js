@@ -22,7 +22,9 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    is_admin: Boolean,
+    is_admin: {
+        type: Boolean,
+    }
 });
  
 exports.UserSchema = UserSchema

@@ -12,6 +12,9 @@ const SaleSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'BookSchema'
     },
+    bookName: {
+        type: String,
+    },
     price: {
         type: Number,
         required: true,

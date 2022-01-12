@@ -8,15 +8,16 @@ exports.index = async function (req, res){
     let result = [];
     books.map(function(doc){
         result.push({
-            id: doc._id,
-            image: doc.image,
-            name: doc.name,
-            author: doc.author.firstname + " " + doc.author.lastname,
-            publisher: doc.publisher.firstname,
-            price: doc.price,
-            cover: doc.cover,
-            available: doc.count > 0,
-            article: doc.article            
+            "id": doc._id,
+            "image": doc.image ?? "default_book.png",
+            "name": doc.name,
+            "author": doc.author.firstname + " " + doc.author.lastname,
+            "pubHouse": doc.publisher.firstname,
+            "price": doc.price,
+            "cover": doc.cover,
+            "available": doc.count > 0,
+            "article": 'olegus',
+
         })
     });
     res.send(result);

@@ -5,47 +5,60 @@
 			<div class="v-profile__info">
 				<img src="../assets/avatar/-H26rt5j56E.jpg" alt="" class="avatar">
 				<div class="fio">
-					<p>Зубенко Михаил Петрович</p>
+					<p>{{ userName}}</p>
 				</div>
 			</div>
 			<div class="v-profile__order">
 				<h2>Список заказов</h2>
-				<div class="order-items">
-					<div class="item">
-						<span>Name of book</span>
-						<span>Article</span>
-						<span>1000 р.</span>
+				<div  class="order-items">
+					<div v-for:="(record) in history" class="item" v-bind:="record.id">
+						<span>{{ record.bookName }}</span>
+						<span>{{ record.date }}</span>
+						<span>{{ record.count }}</span>
 					</div>
 				</div>
 			</div>
 			<div class="v-profile__admin-panel" v-if="isAdmin()">
 				<h2>Админ панель</h2>
-				<!-- <router-link :to="{name: ''}">
+				<router-link :to="{name: 'purchase'}">
 					<div class="v-profile__link-to-db">Изменить поставщиков</div>
 				</router-link>
-				<router-link :to="{name: ''}">
+				<router-link :to="{name: 'book'}">
 					<div class="v-profile__link-to-db">Изменить книгу</div>
 				</router-link>
-				<router-link :to="{name: ''}">
+				<router-link :to="{name: 'author'}">
 					<div class="v-profile__link-to-db">Изменить автора</div>
-				</router-link> -->
+				</router-link>
+				<router-link :to="{name: 'publisher'}">
+					<div class="v-profile__link-to-db">Изменить издательство</div>
+				</router-link>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import axios from 'axios';
+
 	export default {
 		name: 'v-profile',
 		components: {},
 		props: {},
 		data() {
-			return {}
+			return {
+				userName: '',
+				history: [],
+			}
+		},
+		created: function() {
+			const self = this
+			axios.get('http://localhost:8081/user/'+this.$session.get('userId'), {withCredentials: true})
+			.then(res => {
+				const data = res.data;
+				self.userName = `${data.lastname} ${data.firstname} ${data.patronymic ?? ''}`;
+			})
 		},
 		computed: {
-			olegus(){
-				console.log('oleg');
-			}
 		},
 		methods: {
 			isAdmin(){

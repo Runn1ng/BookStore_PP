@@ -1,4 +1,5 @@
 const { User } = require('../models/user');
+const { Sale } = require('../models/sale');
 const { ObjectId } = require('mongoose').Types;
 const crypto = require('crypto')
 
@@ -70,6 +71,12 @@ exports.logout = async function(req, res){
 		})
 }
 
+exports.getUser = async function(req, res){
+	const {id} = req.params;
+	const user = await User.findById(id);
+	const sale = await Sale.find({user: user._id})
+	res.send(user)
+}
 
 function hash(text) {
 	return crypto.createHash('sha1')
